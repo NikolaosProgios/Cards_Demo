@@ -1,0 +1,9 @@
+
+mysqldump adise19_chess1 -u asidirop -p -R  > schema.sql
+sed -i -r 's/DEFINER=`[^`]*`@`[^`]*`//g' schema.sql
+
+# Η παραπάνω εντολή παίρνει backup και επιπλέον από το αρχείο διαγράφει το "DEFINER"
+# που βάζει το mysqldump στις procedures/trigger.
+# To definer ενδεχομένως δημιουργήσει πρόβλημα στο restore σε ένα διαφορετικό σύστημα
+# μέ άλλους χρήστες.
+

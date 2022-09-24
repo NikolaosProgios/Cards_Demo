@@ -1,0 +1,21 @@
+#cards_table {
+	margin: auto;
+	width: 90%;
+	border: 2px solid black;
+}
+
+#cards_table td{
+	text-align: center;
+	border: 1px solid black;
+	width: 13em;
+	height: 13em;
+	padding: 3%;
+}
+#ground{
+	height: 16em;
+}
+#cards_table th{
+	text-align: center;
+	
+}
+

@@ -1,0 +1,109 @@
+DROP TABLE IF EXISTS game;
+DROP TABLE IF EXISTS players;
+DROP TABLE IF EXISTS board;
+DROP TABLE IF EXISTS cards;
+-- cards Table
+
+CREATE TABLE cards (
+	cardName varchar(15) NOT NULL,
+	cardSymbol varchar(15) NOT NULL,
+	cardColor varchar(10) NOT NULL,
+	cardValue integer,
+	cardID integer NOT NULL,
+    PRIMARY KEY (cardID)
+);
+INSERT INTO 
+	cards (cardName,cardSymbol,cardColor, cardValue, cardID)
+VALUES 
+	('Ace','hearts','red',1,1),
+	('Ace','spades','black',1,2),
+	('Ace','diamonds','red',1,3),
+	('Ace','clubs','black',1,4),
+
+	('Two','hearts','red',2,5),
+	('Two','spades','black',2,6),
+	('Two','diamonds','red',2,7),
+	('Two','clubs','black',2,8),
+	('Three','hearts','red',3,9),
+	('Three','spades','black',3,10),
+	('Three','diamonds','red',3,11),
+	('Three','clubs','black',3,12),
+	('Four','hearts','red', 4,13),
+	('Four','spades','black', 4,14),
+	('Four','diamonds','red', 4,15),
+	('Four','clubs','black', 4,16),
+	('Five','hearts','red', 5,17),
+	('Five','spades','black', 5,18),
+	('Five','diamonds','red', 5,19),
+	('Five','clubs','black', 5,20),
+	('Six','hearts','red', 6,21),
+	('Six','spades','black', 6,22),
+	('Six','diamonds','red', 6,23),
+	('Six','clubs','black', 6,24),
+	('Seven','hearts','red', 7,25),
+	('Seven','spades','black', 7,26),
+	('Seven','diamonds','red', 7,27),
+	('Seven','clubs','black', 7,28),
+	('Eight','hearts','red', 8,29),
+	('Eight','spades','black', 8,30),
+	('Eight','diamonds','red', 8,31),
+	('Eight','clubs','black', 8,32),
+	('Nine','hearts','red', 9,33),
+	('Nine','spades','black', 9,34),
+	('Nine','diamonds','red', 9,35),
+	('Nine','clubs','black', 9,36),
+	('Ten','hearts','red', 10,37),
+	('Ten','spades','black', 10,38),
+	('Ten','diamonds','red', 10,39),
+	('Ten','clubs','black', 10,40),
+	('Jack','hearts','red',13,41),
+	('Jack','spades','black',13,42),
+	('Jack','diamonds','red',13,43),
+	('Jack','clubs','black',13,44),
+	('Queen','hearts','red',11,45),
+	('Queen','spades','black',11,46),
+	('Queen','diamonds','red',11,47),
+	('Queen','clubs','black',11,48),
+	('King','hearts','red',12,49),
+	('King','spades','black',12,50),
+	('King','diamonds','red',12,51),
+	('King','clubs','black',12,52)
+;
+
+-- players Table
+
+CREATE TABLE players (
+	playerName varchar(255) NOT NULL,
+	totalScore integer,
+	PRIMARY KEY (playerName)
+);
+
+
+INSERT INTO players (playerName,totalScore) VALUES ('testPlayer1',0);
+INSERT INTO players (playerName,totalScore) VALUES ('testPlayer2',0);
+
+
+-- game Table
+
+CREATE TABLE game (
+	playerID integer NOT NULL,
+	playerName varchar(255),
+	playerScore integer,
+	PRIMARY KEY (playerID),
+	FOREIGN KEY (playerName) REFERENCES players(playerName)
+);
+
+-- INSERT INTO game (playerID,playerName,playerScore) VALUES ();
+
+-- INSERT INTO game (playerID,playerName,playerScore) VALUES ();
+
+-- board Table
+-- 1=player1, 2=player2, 3=ground, 4=cardsPile
+
+CREATE TABLE board (
+	playerID integer,
+	cardID integer NOT NULL,
+	PRIMARY KEY (playerID),
+    FOREIGN KEY (cardID) REFERENCES cards (cardID)
+);
+
